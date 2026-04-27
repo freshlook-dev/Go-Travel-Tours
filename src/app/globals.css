@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0b1f3a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-brand-navy: #071b33;
+  --color-brand-blue: #0d3a66;
+  --color-brand-gold: #d6a84f;
+  --color-brand-sky: #eaf5ff;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: #d6a84f;
+  color: #071b33;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  box-shadow: 0 24px 80px rgba(7, 27, 51, 0.18);
+  backdrop-filter: blur(18px);
+}
+
+.section-shell {
+  margin-inline: auto;
+  width: min(1120px, calc(100% - 32px));
+}
+
+.hero-bg {
+  background-image:
+    linear-gradient(90deg, rgba(7, 27, 51, 0.92), rgba(7, 27, 51, 0.6), rgba(7, 27, 51, 0.22)),
+    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2200&q=85");
+  background-position: center;
+  background-size: cover;
+}
+
+.page-hero {
+  background-image:
+    linear-gradient(90deg, rgba(7, 27, 51, 0.9), rgba(13, 58, 102, 0.68)),
+    url("https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1800&q=85");
+  background-position: center;
+  background-size: cover;
+}
