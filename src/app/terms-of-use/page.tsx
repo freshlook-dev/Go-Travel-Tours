@@ -63,8 +63,8 @@ export default function TermsOfUsePage() {
                 support page
               </Link>{" "}
               or by email at{" "}
-              <a className="font-bold text-brand-blue" href="mailto:info@gotraveltours.com">
-                info@gotraveltours.com
+              <a className="font-bold text-brand-blue" href="mailto:info@gotravelandtours.al">
+                info@gotravelandtours.al
               </a>.
             </p>
           </article>

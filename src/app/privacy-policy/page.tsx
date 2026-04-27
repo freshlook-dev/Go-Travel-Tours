@@ -60,8 +60,8 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-xl font-black text-brand-navy">Contact</h2>
             <p className="mt-3 leading-8">
               For privacy questions, contact us at{" "}
-              <a className="font-bold text-brand-blue" href="mailto:info@gotraveltours.com">
-                info@gotraveltours.com
+              <a className="font-bold text-brand-blue" href="mailto:info@gotravelandtours.al">
+                info@gotravelandtours.al
               </a>{" "}
               or visit our <Link className="font-bold text-brand-blue" href="/support">support page</Link>.
             </p>

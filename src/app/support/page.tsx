@@ -10,20 +10,20 @@ export const metadata = {
 const supportContacts = [
   {
     label: "Support email",
-    value: "info@gotraveltours.com",
-    href: "mailto:info@gotraveltours.com",
+    value: "info@gotravelandtours.al",
+    href: "mailto:info@gotravelandtours.al",
     icon: Mail,
   },
   {
     label: "Support phone",
-    value: "+383 44 000 000",
-    href: "tel:+38344000000",
+    value: "+383 44 38 77 38",
+    href: "tel:+38344387738",
     icon: Phone,
   },
   {
     label: "WhatsApp",
-    value: "+383 44 000 000",
-    href: "https://wa.me/38344000000",
+    value: "+383 44 38 77 38",
+    href: "https://wa.me/38344387738",
     icon: MessageCircle,
   },
 ];
@@ -51,7 +51,7 @@ export default function SupportPage() {
               <div className="mt-5 space-y-4 text-sm text-white/78">
                 <p className="flex items-center gap-3">
                   <MapPin size={18} className="text-brand-gold" />
-                  Service point address: Prishtina, Kosovo
+                  Service point address: Rr. Ferid Curri, Prishtine
                 </p>
                 <p className="flex items-center gap-3">
                   <Clock size={18} className="text-brand-gold" />

@@ -76,15 +76,15 @@ export function Footer() {
           <div className="space-y-3 text-sm text-white/78">
             <p className="flex items-center gap-3">
               <MapPin size={17} className="text-brand-gold" />
-              New office in Prishtina, Kosovo
+              Rr. Ferid Curri, Prishtine
             </p>
             <p className="flex items-center gap-3">
               <Phone size={17} className="text-brand-gold" />
-              +383 44 000 000
+              +383 44 38 77 38
             </p>
             <p className="flex items-center gap-3">
               <Mail size={17} className="text-brand-gold" />
-              info@gotraveltours.com
+              info@gotravelandtours.al
             </p>
           </div>
         </div>

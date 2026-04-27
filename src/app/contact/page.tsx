@@ -28,10 +28,13 @@ export default function ContactPage() {
                 <MapPin className="text-brand-gold" size={20} /> Prishtina, Kosovo
               </p>
               <p className="flex items-center gap-3">
-                <Phone className="text-brand-gold" size={20} /> +383 44 000 000
+                <MapPin className="text-brand-gold" size={20} /> Rr. Ferid Curri, Prishtine
               </p>
               <p className="flex items-center gap-3">
-                <Mail className="text-brand-gold" size={20} /> info@gotraveltours.com
+                <Phone className="text-brand-gold" size={20} /> +383 44 38 77 38
+              </p>
+              <p className="flex items-center gap-3">
+                <Mail className="text-brand-gold" size={20} /> info@gotravelandtours.al
               </p>
             </div>
           </div>

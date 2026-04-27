@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://gotraveltours.vercel.app"),
+  metadataBase: new URL("https://www.gotravelandtours.al"),
   title: {
     default: "Go Travel & Tours | Flights, Hotels and Packages",
     template: "%s | Go Travel & Tours",

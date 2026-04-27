@@ -27,7 +27,7 @@ export function ContactForm() {
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
         <label className="text-sm font-bold text-brand-navy">
           Phone
-          <input className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-brand-gold" placeholder="+383 ..." />
+          <input className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-brand-gold" placeholder="+383 44 38 77 38" />
         </label>
         <label className="text-sm font-bold text-brand-navy">
           Service
