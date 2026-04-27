@@ -11,10 +11,16 @@ const links = [
   ["Dashboard", "/dashboard"],
 ];
 
+const legalLinks = [
+  ["Privacy Policy", "/privacy-policy"],
+  ["Terms of Use", "/terms-of-use"],
+  ["Support", "/support"],
+];
+
 export function Footer() {
   return (
     <footer className="bg-brand-navy text-white">
-      <div className="section-shell grid gap-10 py-12 lg:grid-cols-[1.2fr_0.8fr_1fr]">
+      <div className="section-shell grid gap-10 py-12 lg:grid-cols-[1.2fr_0.75fr_0.75fr_1fr]">
         <div>
           <div className="flex items-center gap-3">
             <Image
@@ -52,6 +58,19 @@ export function Footer() {
 
         <div>
           <p className="mb-4 text-sm font-black uppercase tracking-[0.18em] text-brand-gold">
+            Legal
+          </p>
+          <div className="grid gap-3 text-sm">
+            {legalLinks.map(([label, href]) => (
+              <Link key={href} href={href} className="text-white/72 hover:text-white">
+                {label}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <p className="mb-4 text-sm font-black uppercase tracking-[0.18em] text-brand-gold">
             Contact
           </p>
           <div className="space-y-3 text-sm text-white/78">
@@ -71,7 +90,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10 py-5 text-center text-xs text-white/55">
-        © 2026 Go Travel & Tours. Built for modern travel bookings.
+        (c) 2026 Go Travel & Tours. Built for modern travel bookings.
       </div>
     </footer>
   );
