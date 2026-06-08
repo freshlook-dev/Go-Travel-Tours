@@ -5,11 +5,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { company, navLinks } from "@/data/site";
+import { useLanguage } from "@/components/LanguageProvider";
+import { company, navLinks, text } from "@/data/site";
 
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const { language, toggleLanguage } = useLanguage();
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/92 backdrop-blur-xl">
@@ -33,18 +35,26 @@ export function Header() {
                   active ? "bg-navy text-white" : "text-slate-700 hover:bg-slate-100 hover:text-navy"
                 }`}
               >
-                {item.label}
+                {text(item.label, language)}
               </Link>
             );
           })}
         </div>
 
         <div className="hidden items-center gap-3 lg:flex">
+          <button
+            type="button"
+            onClick={toggleLanguage}
+            className="rounded-full border border-slate-200 px-3 py-2 text-xs font-black text-navy transition hover:border-gold hover:bg-amber-50"
+            aria-label="Change language"
+          >
+            {language === "sq" ? "EN" : "SQ"}
+          </button>
           <a href={company.primaryPhoneHref} className="text-sm font-black text-navy">
             {company.primaryPhone}
           </a>
           <a href="#request" className="rounded-full bg-gold px-5 py-3 text-sm font-black text-navy shadow-lg shadow-amber-900/10">
-            Kerko oferte / Request trip
+            {language === "sq" ? "Kerko oferte" : "Request trip"}
           </a>
         </div>
 
@@ -68,9 +78,16 @@ export function Header() {
                 onClick={() => setOpen(false)}
                 className="rounded-2xl px-4 py-3 text-sm font-bold text-slate-700 hover:bg-slate-100"
               >
-                {item.label}
+                {text(item.label, language)}
               </Link>
             ))}
+            <button
+              type="button"
+              onClick={toggleLanguage}
+              className="rounded-2xl border border-slate-200 px-4 py-3 text-center text-sm font-black text-navy"
+            >
+              {language === "sq" ? "Switch to English" : "Kalo ne shqip"}
+            </button>
             <a href={company.primaryPhoneHref} className="rounded-2xl bg-navy px-4 py-3 text-center text-sm font-black text-white">
               {company.primaryPhone}
             </a>

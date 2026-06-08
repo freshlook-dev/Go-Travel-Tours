@@ -1,15 +1,20 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { company, navLinks, offices } from "@/data/site";
+import { useLanguage } from "@/components/LanguageProvider";
+import { company, navLinks, offices, text } from "@/data/site";
 
 const legal = [
-  { href: "/privacy-policy", label: "Privatesia / Privacy Policy" },
-  { href: "/terms-of-use", label: "Kushtet / Terms of Use" },
-  { href: "/support", label: "Kontakt / Support" },
+  { href: "/privacy-policy", label: { sq: "Privatesia", en: "Privacy Policy" } },
+  { href: "/terms-of-use", label: { sq: "Kushtet", en: "Terms of Use" } },
+  { href: "/support", label: { sq: "Kontakt", en: "Support" } },
 ];
 
 export function Footer() {
+  const { language } = useLanguage();
+
   return (
     <footer className="bg-navy text-white">
       <div className="container-page grid gap-10 py-12 lg:grid-cols-[1.2fr_0.7fr_0.7fr_1fr]">
@@ -18,14 +23,15 @@ export function Footer() {
             <Image src="/go-travel-logo.png" alt={company.name} width={64} height={80} className="h-16 w-auto" />
             <div>
               <p className="text-xl font-black uppercase">{company.name}</p>
-              <p className="text-sm font-bold text-gold">Zyra ne Prishtine dhe Tirane</p>
+              <p className="text-sm font-bold text-gold">
+                {language === "sq" ? "Zyra ne Prishtine dhe Tirane" : "Offices in Prishtine and Tirana"}
+              </p>
             </div>
           </div>
           <p className="mt-5 max-w-md text-sm leading-7 text-white/70">
-            Fluturime, hotele, paketa pushimesh dhe mbeshtetje praktike per udhetare ne Kosove dhe Shqiperi.
-            <span className="mt-2 block text-white/55">
-              Flights, hotels, holiday packages, and support across Kosovo and Albania.
-            </span>
+            {language === "sq"
+              ? "Fluturime, hotele, paketa pushimesh dhe mbeshtetje praktike per udhetare ne Kosove dhe Shqiperi."
+              : "Flights, hotels, holiday packages, and support across Kosovo and Albania."}
           </p>
         </div>
 
@@ -34,28 +40,32 @@ export function Footer() {
           <div className="grid gap-3 text-sm">
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} className="text-white/72 hover:text-white">
-                {link.label}
+                {text(link.label, language)}
               </Link>
             ))}
           </div>
         </div>
 
         <div>
-          <p className="mb-4 text-sm font-black uppercase tracking-[0.18em] text-gold">Ligjore / Legal</p>
+          <p className="mb-4 text-sm font-black uppercase tracking-[0.18em] text-gold">
+            {language === "sq" ? "Ligjore" : "Legal"}
+          </p>
           <div className="grid gap-3 text-sm">
             {legal.map((link) => (
               <Link key={link.href} href={link.href} className="text-white/72 hover:text-white">
-                {link.label}
+                {text(link.label, language)}
               </Link>
             ))}
           </div>
         </div>
 
         <div>
-          <p className="mb-4 text-sm font-black uppercase tracking-[0.18em] text-gold">Kontakt / Contact</p>
+          <p className="mb-4 text-sm font-black uppercase tracking-[0.18em] text-gold">
+            {language === "sq" ? "Kontakt" : "Contact"}
+          </p>
           <div className="space-y-3 text-sm text-white/76">
             {offices.map((office) => (
-              <div key={office.city} className="space-y-2">
+              <div key={office.address} className="space-y-2">
                 <p className="flex items-center gap-3"><MapPin size={17} className="text-gold" /> {office.address}</p>
                 <p className="flex items-center gap-3"><Phone size={17} className="text-gold" /> {office.phone}</p>
               </div>
