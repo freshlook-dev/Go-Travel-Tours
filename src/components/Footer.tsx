@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { company, navLinks } from "@/data/site";
+import { company, navLinks, offices } from "@/data/site";
 
 const legal = [
-  { href: "/privacy-policy", label: "Privacy Policy" },
-  { href: "/terms-of-use", label: "Terms of Use" },
-  { href: "/support", label: "Support" },
+  { href: "/privacy-policy", label: "Privatesia / Privacy Policy" },
+  { href: "/terms-of-use", label: "Kushtet / Terms of Use" },
+  { href: "/support", label: "Kontakt / Support" },
 ];
 
 export function Footer() {
@@ -18,11 +18,14 @@ export function Footer() {
             <Image src="/go-travel-logo.png" alt={company.name} width={64} height={80} className="h-16 w-auto" />
             <div>
               <p className="text-xl font-black uppercase">{company.name}</p>
-              <p className="text-sm font-bold text-gold">Prishtine travel office</p>
+              <p className="text-sm font-bold text-gold">Zyra ne Prishtine dhe Tirane</p>
             </div>
           </div>
           <p className="mt-5 max-w-md text-sm leading-7 text-white/70">
-            Flights, hotels, holiday packages, and practical support for travelers across Kosovo and Albania.
+            Fluturime, hotele, paketa pushimesh dhe mbeshtetje praktike per udhetare ne Kosove dhe Shqiperi.
+            <span className="mt-2 block text-white/55">
+              Flights, hotels, holiday packages, and support across Kosovo and Albania.
+            </span>
           </p>
         </div>
 
@@ -38,7 +41,7 @@ export function Footer() {
         </div>
 
         <div>
-          <p className="mb-4 text-sm font-black uppercase tracking-[0.18em] text-gold">Legal</p>
+          <p className="mb-4 text-sm font-black uppercase tracking-[0.18em] text-gold">Ligjore / Legal</p>
           <div className="grid gap-3 text-sm">
             {legal.map((link) => (
               <Link key={link.href} href={link.href} className="text-white/72 hover:text-white">
@@ -49,10 +52,14 @@ export function Footer() {
         </div>
 
         <div>
-          <p className="mb-4 text-sm font-black uppercase tracking-[0.18em] text-gold">Contact</p>
+          <p className="mb-4 text-sm font-black uppercase tracking-[0.18em] text-gold">Kontakt / Contact</p>
           <div className="space-y-3 text-sm text-white/76">
-            <p className="flex items-center gap-3"><MapPin size={17} className="text-gold" /> {company.address}</p>
-            <p className="flex items-center gap-3"><Phone size={17} className="text-gold" /> {company.phone}</p>
+            {offices.map((office) => (
+              <div key={office.city} className="space-y-2">
+                <p className="flex items-center gap-3"><MapPin size={17} className="text-gold" /> {office.address}</p>
+                <p className="flex items-center gap-3"><Phone size={17} className="text-gold" /> {office.phone}</p>
+              </div>
+            ))}
             <p className="flex items-center gap-3"><Mail size={17} className="text-gold" /> {company.email}</p>
           </div>
         </div>

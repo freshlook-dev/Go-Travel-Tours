@@ -18,15 +18,15 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.gotravelandtours.al"),
   title: {
-    default: "Go Travel & Tours | Travel Agency in Prishtine",
+    default: "Go Travel & Tours | Agjenci Udhetimi ne Prishtine dhe Tirane",
     template: "%s | Go Travel & Tours",
   },
   description:
-    "Go Travel & Tours helps travelers in Kosovo and Albania book flights, hotels, holiday packages, and premium travel support.",
+    "Go Travel & Tours ndihmon udhetaret ne Kosove dhe Shqiperi me fluturime, hotele, paketa pushimesh dhe mbeshtetje ne shqip dhe anglisht.",
   openGraph: {
     title: "Go Travel & Tours",
     description:
-      "Flights, hotels, packages, and travel support from Rr. Ferid Curri, Prishtine.",
+      "Fluturime, hotele, paketa dhe mbeshtetje udhetimi nga zyrat ne Prishtine dhe Tirane.",
     images: ["/go-travel-logo.png"],
   },
 };
@@ -38,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="sq"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-white text-ink">

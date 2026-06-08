@@ -40,11 +40,11 @@ export function Header() {
         </div>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <a href={company.phoneHref} className="text-sm font-black text-navy">
-            {company.phone}
+          <a href={company.primaryPhoneHref} className="text-sm font-black text-navy">
+            {company.primaryPhone}
           </a>
           <a href="#request" className="rounded-full bg-gold px-5 py-3 text-sm font-black text-navy shadow-lg shadow-amber-900/10">
-            Request trip
+            Kerko oferte / Request trip
           </a>
         </div>
 
@@ -71,8 +71,8 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
-            <a href={company.phoneHref} className="rounded-2xl bg-navy px-4 py-3 text-center text-sm font-black text-white">
-              {company.phone}
+            <a href={company.primaryPhoneHref} className="rounded-2xl bg-navy px-4 py-3 text-center text-sm font-black text-white">
+              {company.primaryPhone}
             </a>
           </div>
         </div>

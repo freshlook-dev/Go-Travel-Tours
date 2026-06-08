@@ -1,9 +1,9 @@
 import Image from "next/image";
-import { company } from "@/data/site";
+import { company, offices } from "@/data/site";
 
 export const metadata = {
-  title: "About",
-  description: "About Go Travel & Tours in Prishtine.",
+  title: "Rreth nesh / About",
+  description: "Rreth Go Travel & Tours ne Prishtine dhe Tirane.",
 };
 
 export default function AboutPage() {
@@ -13,25 +13,34 @@ export default function AboutPage() {
         <div className="rounded-[8px] bg-white p-8 shadow-sm ring-1 ring-slate-200">
           <Image src="/go-travel-logo.png" alt={company.name} width={220} height={280} className="h-48 w-auto" />
           <h1 className="mt-8 text-4xl font-black tracking-tight text-navy sm:text-5xl">
-            A focused travel agency for Kosovo and Albania.
+            Agjenci udhetimi per Kosove dhe Shqiperi.
           </h1>
           <p className="mt-5 text-lg leading-8 text-slate-600">
-            {company.name} works with travelers who want clear offers, real support, and practical planning for flights,
-            hotels, and holidays.
+            {company.name} punon me udhetare qe duan oferta te qarta, mbeshtetje reale dhe planifikim praktik per
+            fluturime, hotele dhe pushime.
+            <span className="mt-3 block text-slate-500">
+              We work with travelers who want clear offers, real support, and practical planning for flights, hotels, and holidays.
+            </span>
           </p>
         </div>
         <div className="grid gap-5">
-          {[
-            ["Office", company.address],
-            ["Phone", company.phone],
-            ["Website", "www.gotravelandtours.al"],
-            ["Support", "Flights, hotels, packages, and customer care"],
-          ].map(([label, value]) => (
-            <div key={label} className="rounded-[8px] bg-white p-6 shadow-sm ring-1 ring-slate-200">
-              <p className="text-sm font-black uppercase tracking-[0.18em] text-gold">{label}</p>
-              <p className="mt-2 text-xl font-black text-navy">{value}</p>
+          {offices.map((office) => (
+            <div key={office.city} className="rounded-[8px] bg-white p-6 shadow-sm ring-1 ring-slate-200">
+              <p className="text-sm font-black uppercase tracking-[0.18em] text-gold">Zyre / Office</p>
+              <p className="mt-2 text-xl font-black text-navy">{office.city}</p>
+              <p className="mt-2 font-bold text-slate-600">{office.address}</p>
+              <a href={office.phoneHref} className="mt-2 inline-flex font-black text-sea">{office.phone}</a>
             </div>
           ))}
+          <div className="rounded-[8px] bg-white p-6 shadow-sm ring-1 ring-slate-200">
+            <p className="text-sm font-black uppercase tracking-[0.18em] text-gold">Website</p>
+            <p className="mt-2 text-xl font-black text-navy">www.gotravelandtours.al</p>
+          </div>
+          <div className="rounded-[8px] bg-white p-6 shadow-sm ring-1 ring-slate-200">
+            <p className="text-sm font-black uppercase tracking-[0.18em] text-gold">Mbeshtetje / Support</p>
+            <p className="mt-2 text-xl font-black text-navy">Fluturime, hotele, paketa dhe kujdes per kliente</p>
+            <p className="mt-2 text-slate-500">Flights, hotels, packages, and customer care</p>
+          </div>
         </div>
       </div>
     </section>
