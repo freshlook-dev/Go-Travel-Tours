@@ -1,71 +1,34 @@
-import Link from "next/link";
-import { ShieldCheck } from "lucide-react";
+import { company } from "@/data/site";
 
 export const metadata = {
   title: "Privacy Policy",
-  description:
-    "Privacy Policy for Go Travel & Tours, including how customer and travel request information is handled.",
+  description: "Privacy Policy for Go Travel & Tours.",
 };
-
-const sections = [
-  {
-    title: "Information we collect",
-    text: "When you contact Go Travel & Tours, request an offer, or use our website forms, we may collect your name, email address, phone number, destination preferences, travel dates, passenger details, and message content needed to prepare travel services.",
-  },
-  {
-    title: "How we use information",
-    text: "We use submitted information to respond to requests, prepare quotes, manage travel arrangements, provide customer support, improve our services, and communicate important travel updates.",
-  },
-  {
-    title: "Sharing with travel partners",
-    text: "When required to fulfill a travel request, we may share relevant details with airlines, hotels, tour operators, transfer providers, visa or insurance partners, and payment or technology providers.",
-  },
-  {
-    title: "Data retention",
-    text: "We keep information only for as long as needed to provide services, meet legal or accounting requirements, resolve disputes, and maintain legitimate business records.",
-  },
-  {
-    title: "Your choices",
-    text: "You may contact us to request access, correction, or deletion of your personal information, subject to applicable legal, security, and booking-related obligations.",
-  },
-];
 
 export default function PrivacyPolicyPage() {
   return (
     <section className="bg-white py-16 sm:py-20">
-      <div className="section-shell max-w-4xl">
-        <div className="mb-10 rounded-[8px] bg-brand-navy p-6 text-white sm:p-8">
-          <p className="flex items-center gap-2 text-sm font-black uppercase tracking-[0.18em] text-brand-gold">
-            <ShieldCheck size={18} /> Legal document
-          </p>
-          <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-5xl">
-            Privacy Policy
-          </h1>
-          <p className="mt-4 max-w-2xl text-sm leading-7 text-white/72">
-            Last updated: April 28, 2026. This page explains how Go Travel &
-            Tours handles information submitted through this website and our
-            travel service channels.
-          </p>
-        </div>
-
-        <div className="space-y-8 text-slate-700">
-          {sections.map((section) => (
-            <article key={section.title}>
-              <h2 className="text-xl font-black text-brand-navy">{section.title}</h2>
-              <p className="mt-3 leading-8">{section.text}</p>
-            </article>
-          ))}
-
-          <article>
-            <h2 className="text-xl font-black text-brand-navy">Contact</h2>
-            <p className="mt-3 leading-8">
-              For privacy questions, contact us at{" "}
-              <a className="font-bold text-brand-blue" href="mailto:info@gotravelandtours.al">
-                info@gotravelandtours.al
-              </a>{" "}
-              or visit our <Link className="font-bold text-brand-blue" href="/support">support page</Link>.
-            </p>
-          </article>
+      <div className="container-page max-w-4xl">
+        <p className="text-sm font-black uppercase tracking-[0.18em] text-gold">Legal document</p>
+        <h1 className="mt-4 text-4xl font-black tracking-tight text-navy sm:text-6xl">Privacy Policy</h1>
+        <p className="mt-4 text-sm font-bold text-slate-500">Last updated: June 8, 2026</p>
+        <div className="mt-10 space-y-8 text-base leading-8 text-slate-700">
+          <section>
+            <h2 className="text-2xl font-black text-navy">Information we collect</h2>
+            <p className="mt-3">We may collect your name, phone number, email address, destination preferences, travel dates, passenger details, and messages when you request travel services.</p>
+          </section>
+          <section>
+            <h2 className="text-2xl font-black text-navy">How we use information</h2>
+            <p className="mt-3">We use information to respond to requests, prepare offers, manage bookings, communicate travel updates, and provide customer support.</p>
+          </section>
+          <section>
+            <h2 className="text-2xl font-black text-navy">Travel partners</h2>
+            <p className="mt-3">When needed, we may share relevant booking information with airlines, hotels, tour operators, transfer providers, and other travel suppliers.</p>
+          </section>
+          <section>
+            <h2 className="text-2xl font-black text-navy">Contact</h2>
+            <p className="mt-3">For privacy questions, contact {company.email} or visit us at {company.address}.</p>
+          </section>
         </div>
       </div>
     </section>

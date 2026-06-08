@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Footer } from "@/components/Footer";
-import { Navbar } from "@/components/Navbar";
+import { Header } from "@/components/Header";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import "./globals.css";
 
@@ -18,25 +18,16 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.gotravelandtours.al"),
   title: {
-    default: "Go Travel & Tours | Flights, Hotels and Packages",
+    default: "Go Travel & Tours | Travel Agency in Prishtine",
     template: "%s | Go Travel & Tours",
   },
   description:
-    "Premium travel agency in Albania and Kosovo offering flights, hotels, tours, and tailored packages from the new Prishtina office.",
-  keywords: [
-    "Go Travel & Tours",
-    "travel agency Kosovo",
-    "travel agency Albania",
-    "Prishtina flights",
-    "holiday packages",
-    "hotels",
-  ],
+    "Go Travel & Tours helps travelers in Kosovo and Albania book flights, hotels, holiday packages, and premium travel support.",
   openGraph: {
     title: "Go Travel & Tours",
     description:
-      "Trusted travel experts for flights, hotels, and curated packages across Albania and Kosovo.",
+      "Flights, hotels, packages, and travel support from Rr. Ferid Curri, Prishtine.",
     images: ["/go-travel-logo.png"],
-    type: "website",
   },
 };
 
@@ -50,9 +41,9 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-slate-50 text-slate-950">
-        <Navbar />
-        <main className="flex-1">{children}</main>
+      <body className="min-h-full bg-white text-ink">
+        <Header />
+        <main>{children}</main>
         <Footer />
         <WhatsAppButton />
       </body>

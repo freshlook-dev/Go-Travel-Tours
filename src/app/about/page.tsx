@@ -1,50 +1,39 @@
-import { Building2, Globe2, UsersRound } from "lucide-react";
-import { PageHero } from "@/components/PageHero";
-import { SectionTitle } from "@/components/SectionTitle";
+import Image from "next/image";
+import { company } from "@/data/site";
 
 export const metadata = {
-  title: "About Us",
-  description: "About Go Travel & Tours, a premium travel agency in Albania and Kosovo.",
+  title: "About",
+  description: "About Go Travel & Tours in Prishtine.",
 };
 
 export default function AboutPage() {
   return (
-    <>
-      <PageHero
-        eyebrow="About us"
-        title="A regional travel agency with a premium service mindset"
-        description="Go Travel & Tours helps travelers in Albania and Kosovo book with confidence, now with an expanding presence in Prishtina."
-      />
-      <section className="bg-white py-20">
-        <div className="section-shell grid gap-12 lg:grid-cols-[1fr_0.9fr] lg:items-center">
-          <div>
-            <SectionTitle
-              align="left"
-              eyebrow="Our story"
-              title="Human travel advice backed by modern digital structure"
-              description="The agency focuses on clear communication, carefully selected offers, and a premium customer experience across flights, hotels, packages, and group travel."
-            />
-            <p className="text-base leading-8 text-slate-600">
-              The website is built to grow with the business: mock data today,
-              clean data models tomorrow, and a path toward Supabase, CRM,
-              payment, or supplier API integrations when the time is right.
-            </p>
-          </div>
-          <div className="grid gap-4">
-            {[
-              ["Albania and Kosovo", "Regional market focus with local traveler knowledge.", Globe2],
-              ["Prishtina office", "A new office presence for consultations and customer support.", Building2],
-              ["Travelers first", "Practical guidance before, during, and after each trip.", UsersRound],
-            ].map(([title, text, Icon]) => (
-              <div key={String(title)} className="rounded-[8px] border border-slate-200 bg-slate-50 p-6">
-                <Icon className="text-brand-gold" size={28} />
-                <h2 className="mt-4 text-xl font-black text-brand-navy">{String(title)}</h2>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{String(text)}</p>
-              </div>
-            ))}
-          </div>
+    <section className="bg-cloud py-16 sm:py-20">
+      <div className="container-page grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div className="rounded-[8px] bg-white p-8 shadow-sm ring-1 ring-slate-200">
+          <Image src="/go-travel-logo.png" alt={company.name} width={220} height={280} className="h-48 w-auto" />
+          <h1 className="mt-8 text-4xl font-black tracking-tight text-navy sm:text-5xl">
+            A focused travel agency for Kosovo and Albania.
+          </h1>
+          <p className="mt-5 text-lg leading-8 text-slate-600">
+            {company.name} works with travelers who want clear offers, real support, and practical planning for flights,
+            hotels, and holidays.
+          </p>
         </div>
-      </section>
-    </>
+        <div className="grid gap-5">
+          {[
+            ["Office", company.address],
+            ["Phone", company.phone],
+            ["Website", "www.gotravelandtours.al"],
+            ["Support", "Flights, hotels, packages, and customer care"],
+          ].map(([label, value]) => (
+            <div key={label} className="rounded-[8px] bg-white p-6 shadow-sm ring-1 ring-slate-200">
+              <p className="text-sm font-black uppercase tracking-[0.18em] text-gold">{label}</p>
+              <p className="mt-2 text-xl font-black text-navy">{value}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

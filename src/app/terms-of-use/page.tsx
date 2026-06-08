@@ -1,73 +1,34 @@
-import Link from "next/link";
-import { FileText } from "lucide-react";
+import { company } from "@/data/site";
 
 export const metadata = {
   title: "Terms of Use",
-  description:
-    "Terms of Use for the Go Travel & Tours website and travel request services.",
+  description: "Terms of Use for Go Travel & Tours.",
 };
-
-const terms = [
-  {
-    title: "Website use",
-    text: "This website provides information about Go Travel & Tours services, sample travel content, and request forms. You agree to use the website lawfully and provide accurate information when submitting requests.",
-  },
-  {
-    title: "Travel offers",
-    text: "Prices, availability, dates, hotel categories, routes, and package details shown on the website may be sample or promotional information. Final offers are confirmed only after availability is checked with the relevant supplier.",
-  },
-  {
-    title: "Bookings and payments",
-    text: "Bookings may be subject to supplier terms, fare rules, cancellation policies, payment deadlines, visa requirements, and passenger document requirements. Customers are responsible for reviewing final booking details before confirmation.",
-  },
-  {
-    title: "Third-party services",
-    text: "Flights, hotels, tours, transfers, insurance, and related travel services are commonly provided by third-party suppliers. Go Travel & Tours assists with coordination and customer support according to the confirmed service terms.",
-  },
-  {
-    title: "Limitation of liability",
-    text: "Go Travel & Tours is not responsible for disruptions outside its reasonable control, including airline schedule changes, weather, border decisions, supplier changes, strikes, force majeure events, or incorrect information provided by customers.",
-  },
-];
 
 export default function TermsOfUsePage() {
   return (
-    <section className="bg-slate-50 py-16 sm:py-20">
-      <div className="section-shell max-w-4xl">
-        <div className="mb-10 rounded-[8px] bg-white p-6 shadow-sm ring-1 ring-slate-200 sm:p-8">
-          <p className="flex items-center gap-2 text-sm font-black uppercase tracking-[0.18em] text-brand-gold">
-            <FileText size={18} /> Legal document
-          </p>
-          <h1 className="mt-4 text-4xl font-black tracking-tight text-brand-navy sm:text-5xl">
-            Terms of Use
-          </h1>
-          <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-600">
-            Last updated: April 28, 2026. These terms outline how visitors and
-            customers may use the Go Travel & Tours website and request services.
-          </p>
-        </div>
-
-        <div className="space-y-8 rounded-[8px] bg-white p-6 text-slate-700 shadow-sm ring-1 ring-slate-200 sm:p-8">
-          {terms.map((term) => (
-            <article key={term.title}>
-              <h2 className="text-xl font-black text-brand-navy">{term.title}</h2>
-              <p className="mt-3 leading-8">{term.text}</p>
-            </article>
-          ))}
-
-          <article>
-            <h2 className="text-xl font-black text-brand-navy">Support</h2>
-            <p className="mt-3 leading-8">
-              Questions about these terms can be sent through our{" "}
-              <Link className="font-bold text-brand-blue" href="/support">
-                support page
-              </Link>{" "}
-              or by email at{" "}
-              <a className="font-bold text-brand-blue" href="mailto:info@gotravelandtours.al">
-                info@gotravelandtours.al
-              </a>.
-            </p>
-          </article>
+    <section className="bg-cloud py-16 sm:py-20">
+      <div className="container-page max-w-4xl rounded-[8px] bg-white p-6 shadow-sm ring-1 ring-slate-200 sm:p-10">
+        <p className="text-sm font-black uppercase tracking-[0.18em] text-gold">Legal document</p>
+        <h1 className="mt-4 text-4xl font-black tracking-tight text-navy sm:text-6xl">Terms of Use</h1>
+        <p className="mt-4 text-sm font-bold text-slate-500">Last updated: June 8, 2026</p>
+        <div className="mt-10 space-y-8 text-base leading-8 text-slate-700">
+          <section>
+            <h2 className="text-2xl font-black text-navy">Website information</h2>
+            <p className="mt-3">This website provides information about {company.name}, travel services, sample destination ideas, and ways to contact our team.</p>
+          </section>
+          <section>
+            <h2 className="text-2xl font-black text-navy">Prices and availability</h2>
+            <p className="mt-3">Prices and packages shown on the website are sample offers. Final availability, fare rules, and booking details are confirmed directly with our team and travel suppliers.</p>
+          </section>
+          <section>
+            <h2 className="text-2xl font-black text-navy">Customer responsibility</h2>
+            <p className="mt-3">Customers are responsible for checking passenger details, travel documents, visa requirements, and confirmed booking terms before payment or travel.</p>
+          </section>
+          <section>
+            <h2 className="text-2xl font-black text-navy">Support</h2>
+            <p className="mt-3">For questions about these terms, contact {company.email} or call {company.phone}.</p>
+          </section>
         </div>
       </div>
     </section>

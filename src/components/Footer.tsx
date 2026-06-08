@@ -1,96 +1,64 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { company, navLinks } from "@/data/site";
 
-const links = [
-  ["Flights", "/flights"],
-  ["Hotels", "/hotels"],
-  ["Tours", "/tours"],
-  ["About Us", "/about"],
-  ["Contact", "/contact"],
-  ["Dashboard", "/dashboard"],
-];
-
-const legalLinks = [
-  ["Privacy Policy", "/privacy-policy"],
-  ["Terms of Use", "/terms-of-use"],
-  ["Support", "/support"],
+const legal = [
+  { href: "/privacy-policy", label: "Privacy Policy" },
+  { href: "/terms-of-use", label: "Terms of Use" },
+  { href: "/support", label: "Support" },
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-brand-navy text-white">
-      <div className="section-shell grid gap-10 py-12 lg:grid-cols-[1.2fr_0.75fr_0.75fr_1fr]">
+    <footer className="bg-navy text-white">
+      <div className="container-page grid gap-10 py-12 lg:grid-cols-[1.2fr_0.7fr_0.7fr_1fr]">
         <div>
           <div className="flex items-center gap-3">
-            <Image
-              src="/go-travel-logo.png"
-              alt="Go Travel & Tours logo"
-              width={72}
-              height={90}
-              className="h-16 w-auto"
-            />
+            <Image src="/go-travel-logo.png" alt={company.name} width={64} height={80} className="h-16 w-auto" />
             <div>
-              <p className="text-xl font-black uppercase">Go Travel & Tours</p>
-              <p className="text-sm font-semibold text-brand-gold">
-                Albania and Kosovo travel experts
-              </p>
+              <p className="text-xl font-black uppercase">{company.name}</p>
+              <p className="text-sm font-bold text-gold">Prishtine travel office</p>
             </div>
           </div>
-          <p className="mt-5 max-w-md text-sm leading-7 text-white/72">
-            Premium support for flights, hotels, packages, corporate travel,
-            and unforgettable holidays from our growing regional network.
+          <p className="mt-5 max-w-md text-sm leading-7 text-white/70">
+            Flights, hotels, holiday packages, and practical support for travelers across Kosovo and Albania.
           </p>
         </div>
 
         <div>
-          <p className="mb-4 text-sm font-black uppercase tracking-[0.18em] text-brand-gold">
-            Explore
-          </p>
-          <div className="grid grid-cols-2 gap-3 text-sm">
-            {links.map(([label, href]) => (
-              <Link key={href} href={href} className="text-white/72 hover:text-white">
-                {label}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <p className="mb-4 text-sm font-black uppercase tracking-[0.18em] text-brand-gold">
-            Legal
-          </p>
+          <p className="mb-4 text-sm font-black uppercase tracking-[0.18em] text-gold">Menu</p>
           <div className="grid gap-3 text-sm">
-            {legalLinks.map(([label, href]) => (
-              <Link key={href} href={href} className="text-white/72 hover:text-white">
-                {label}
+            {navLinks.map((link) => (
+              <Link key={link.href} href={link.href} className="text-white/72 hover:text-white">
+                {link.label}
               </Link>
             ))}
           </div>
         </div>
 
         <div>
-          <p className="mb-4 text-sm font-black uppercase tracking-[0.18em] text-brand-gold">
-            Contact
-          </p>
-          <div className="space-y-3 text-sm text-white/78">
-            <p className="flex items-center gap-3">
-              <MapPin size={17} className="text-brand-gold" />
-              Rr. Ferid Curri, Prishtine
-            </p>
-            <p className="flex items-center gap-3">
-              <Phone size={17} className="text-brand-gold" />
-              +383 44 38 77 38
-            </p>
-            <p className="flex items-center gap-3">
-              <Mail size={17} className="text-brand-gold" />
-              info@gotravelandtours.al
-            </p>
+          <p className="mb-4 text-sm font-black uppercase tracking-[0.18em] text-gold">Legal</p>
+          <div className="grid gap-3 text-sm">
+            {legal.map((link) => (
+              <Link key={link.href} href={link.href} className="text-white/72 hover:text-white">
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <p className="mb-4 text-sm font-black uppercase tracking-[0.18em] text-gold">Contact</p>
+          <div className="space-y-3 text-sm text-white/76">
+            <p className="flex items-center gap-3"><MapPin size={17} className="text-gold" /> {company.address}</p>
+            <p className="flex items-center gap-3"><Phone size={17} className="text-gold" /> {company.phone}</p>
+            <p className="flex items-center gap-3"><Mail size={17} className="text-gold" /> {company.email}</p>
           </div>
         </div>
       </div>
       <div className="border-t border-white/10 py-5 text-center text-xs text-white/55">
-        (c) 2026 Go Travel & Tours. Built for modern travel bookings.
+        (c) 2026 {company.name}. All rights reserved.
       </div>
     </footer>
   );

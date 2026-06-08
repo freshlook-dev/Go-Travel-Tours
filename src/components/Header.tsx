@@ -1,0 +1,82 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { company, navLinks } from "@/data/site";
+
+export function Header() {
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/92 backdrop-blur-xl">
+      <nav className="container-page flex h-20 items-center justify-between">
+        <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
+          <Image src="/go-travel-logo.png" alt={company.name} width={58} height={72} className="h-14 w-auto" priority />
+          <div className="leading-tight">
+            <p className="text-lg font-black uppercase tracking-wide text-navy">Go Travel</p>
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-gold">& Tours</p>
+          </div>
+        </Link>
+
+        <div className="hidden items-center gap-1 lg:flex">
+          {navLinks.map((item) => {
+            const active = pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`rounded-full px-4 py-2 text-sm font-bold transition ${
+                  active ? "bg-navy text-white" : "text-slate-700 hover:bg-slate-100 hover:text-navy"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+        </div>
+
+        <div className="hidden items-center gap-3 lg:flex">
+          <a href={company.phoneHref} className="text-sm font-black text-navy">
+            {company.phone}
+          </a>
+          <a href="#request" className="rounded-full bg-gold px-5 py-3 text-sm font-black text-navy shadow-lg shadow-amber-900/10">
+            Request trip
+          </a>
+        </div>
+
+        <button
+          type="button"
+          aria-label="Toggle menu"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 text-navy lg:hidden"
+          onClick={() => setOpen((value) => !value)}
+        >
+          {open ? <X /> : <Menu />}
+        </button>
+      </nav>
+
+      {open ? (
+        <div className="border-t border-slate-100 bg-white px-4 pb-5 lg:hidden">
+          <div className="mx-auto flex max-w-xl flex-col gap-2 pt-3">
+            {navLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="rounded-2xl px-4 py-3 text-sm font-bold text-slate-700 hover:bg-slate-100"
+              >
+                {item.label}
+              </Link>
+            ))}
+            <a href={company.phoneHref} className="rounded-2xl bg-navy px-4 py-3 text-center text-sm font-black text-white">
+              {company.phone}
+            </a>
+          </div>
+        </div>
+      ) : null}
+    </header>
+  );
+}

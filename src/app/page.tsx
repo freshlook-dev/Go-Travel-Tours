@@ -1,163 +1,126 @@
 import Link from "next/link";
-import { Award, Building2, CheckCircle2, PlaneTakeoff } from "lucide-react";
-import { DealCard } from "@/components/DealCard";
-import { DestinationCard } from "@/components/DestinationCard";
-import { HeroSearch } from "@/components/HeroSearch";
-import { MotionReveal } from "@/components/MotionReveal";
-import { SectionTitle } from "@/components/SectionTitle";
-import { deals, destinations, trustStats, whyChoose } from "@/data/travel";
+import { ArrowRight, CheckCircle2, PlaneTakeoff } from "lucide-react";
+import { PackageCard } from "@/components/PackageCard";
+import { Reveal } from "@/components/Reveal";
+import { TripRequest } from "@/components/TripRequest";
+import { company, packages, services, trustItems } from "@/data/site";
 
 export default function Home() {
   return (
     <>
-      <section className="hero-bg">
-        <div className="section-shell grid min-h-[720px] items-center gap-10 py-16 lg:grid-cols-[1fr_0.95fr]">
-          <MotionReveal>
+      <section className="hero-image">
+        <div className="container-page grid min-h-[720px] items-center gap-10 py-14 lg:grid-cols-[1fr_420px]">
+          <Reveal>
             <div className="max-w-3xl text-white">
               <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-bold backdrop-blur">
-                <PlaneTakeoff size={18} className="text-brand-gold" />
-                New office now serving travelers in Prishtina
+                <PlaneTakeoff size={18} className="text-gold" /> Travel agency in Prishtine
               </p>
-              <h1 className="text-4xl font-black tracking-tight sm:text-6xl lg:text-7xl">
-                Premium travel planning from Albania and Kosovo.
+              <h1 className="text-5xl font-black tracking-tight sm:text-7xl">
+                Travel plans made simple, clear, and personal.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/78">
-                Book flights, hotels, and complete holiday packages with a trusted
-                regional agency that keeps every journey clear, polished, and easy.
+                {company.name} helps you book flights, hotels, and complete holiday packages with local support from {company.address}.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href="/tours"
-                  className="rounded-full bg-brand-gold px-7 py-4 text-center text-sm font-black text-brand-navy shadow-xl shadow-yellow-900/20"
-                >
-                  View packages
+                <Link href="/packages" className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-7 py-4 text-sm font-black text-navy">
+                  See packages <ArrowRight size={17} />
                 </Link>
-                <Link
-                  href="/contact"
-                  className="rounded-full border border-white/30 px-7 py-4 text-center text-sm font-black text-white hover:bg-white/10"
-                >
-                  Talk to an advisor
-                </Link>
+                <a href={company.phoneHref} className="rounded-full border border-white/30 px-7 py-4 text-center text-sm font-black text-white hover:bg-white/10">
+                  Call {company.phone}
+                </a>
               </div>
             </div>
-          </MotionReveal>
-          <HeroSearch />
+          </Reveal>
+          <Reveal delay={0.1}>
+            <TripRequest />
+          </Reveal>
         </div>
       </section>
 
-      <section className="bg-white py-20">
-        <div className="section-shell">
-          <SectionTitle
-            eyebrow="Popular destinations"
-            title="Trips our travelers are booking now"
-            description="Curated ideas for city breaks, beach holidays, premium escapes, and family travel."
-          />
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {destinations.map((destination, index) => (
-              <MotionReveal key={destination.name} delay={index * 0.05}>
-                <DestinationCard destination={destination} />
-              </MotionReveal>
-            ))}
+      <section className="bg-cloud py-16 sm:py-20">
+        <div className="container-page">
+          <div className="mb-10 max-w-2xl">
+            <p className="text-sm font-black uppercase tracking-[0.18em] text-gold">What we do</p>
+            <h2 className="mt-3 text-4xl font-black tracking-tight text-navy">Everything needed for a smoother trip.</h2>
           </div>
-        </div>
-      </section>
-
-      <section className="bg-slate-50 py-20">
-        <div className="section-shell">
-          <SectionTitle
-            eyebrow="Featured deals"
-            title="Smart offers with agency support"
-            description="Sample travel deals are powered by mock data and ready for future API or Supabase integration."
-          />
-          <div className="grid gap-6 lg:grid-cols-3">
-            {deals.map((deal, index) => (
-              <MotionReveal key={deal.title} delay={index * 0.08}>
-                <DealCard deal={deal} />
-              </MotionReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white py-20">
-        <div className="section-shell grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <MotionReveal>
-            <div>
-              <SectionTitle
-                align="left"
-                eyebrow="Why choose us"
-                title="Built for travelers who value trust and speed"
-                description="From first quote to return flight, Go Travel & Tours keeps the process human, responsive, and detail-driven."
-              />
-              <Link
-                href="/about"
-                className="inline-flex rounded-full bg-brand-navy px-6 py-3 text-sm font-black text-white hover:bg-brand-blue"
-              >
-                Meet the agency
-              </Link>
-            </div>
-          </MotionReveal>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {whyChoose.map((item, index) => {
-              const Icon = item.icon;
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {services.map((service, index) => {
+              const Icon = service.icon;
               return (
-                <MotionReveal key={item.title} delay={index * 0.05}>
-                  <div className="h-full rounded-[8px] border border-slate-200 bg-slate-50 p-6">
-                    <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-navy text-brand-gold">
-                      <Icon size={22} />
+                <Reveal key={service.title} delay={index * 0.04}>
+                  <div className="h-full rounded-[8px] bg-white p-6 shadow-sm ring-1 ring-slate-200">
+                    <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full bg-navy text-gold">
+                      <Icon size={23} />
                     </div>
-                    <h3 className="text-lg font-black text-brand-navy">{item.title}</h3>
-                    <p className="mt-3 text-sm leading-6 text-slate-600">{item.text}</p>
+                    <h3 className="text-lg font-black text-navy">{service.title}</h3>
+                    <p className="mt-3 text-sm leading-6 text-slate-600">{service.text}</p>
                   </div>
-                </MotionReveal>
+                </Reveal>
               );
             })}
           </div>
         </div>
       </section>
 
-      <section className="bg-brand-navy py-16 text-white">
-        <div className="section-shell">
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {trustStats.map((stat) => (
-              <div key={stat.label} className="rounded-[8px] border border-white/10 bg-white/5 p-6 text-center">
-                <p className="text-4xl font-black text-brand-gold">{stat.value}</p>
-                <p className="mt-2 text-sm font-semibold uppercase tracking-wide text-white/66">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
+      <section className="bg-white py-16 sm:py-20">
+        <div className="container-page">
+          <div className="mb-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.18em] text-gold">Popular ideas</p>
+              <h2 className="mt-3 text-4xl font-black tracking-tight text-navy">Start with a destination.</h2>
+            </div>
+            <Link href="/packages" className="inline-flex items-center gap-2 text-sm font-black text-sea">
+              View all packages <ArrowRight size={17} />
+            </Link>
           </div>
-          <div className="mt-10 grid gap-4 lg:grid-cols-3">
-            {[
-              ["Licensed support", Award],
-              ["Prishtina office", Building2],
-              ["Transparent travel care", CheckCircle2],
-            ].map(([label, Icon]) => (
-              <div key={String(label)} className="flex items-center gap-3 text-white/78">
-                <Icon className="text-brand-gold" size={22} />
-                <span className="font-bold">{String(label)}</span>
-              </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {packages.slice(0, 3).map((item, index) => (
+              <Reveal key={item.destination} delay={index * 0.05}>
+                <PackageCard item={item} />
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-brand-sky py-20">
-        <div className="section-shell rounded-[8px] bg-white p-8 shadow-xl shadow-slate-200/80 sm:p-12 lg:flex lg:items-center lg:justify-between lg:gap-10">
+      <section className="soft-grid bg-navy py-16 text-white sm:py-20">
+        <div className="container-page grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
-            <p className="text-sm font-black uppercase tracking-[0.18em] text-brand-gold">
-              Ready when you are
+            <p className="text-sm font-black uppercase tracking-[0.18em] text-gold">Why travelers choose us</p>
+            <h2 className="mt-3 text-4xl font-black tracking-tight">Local support, premium attention.</h2>
+            <p className="mt-5 text-base leading-8 text-white/70">
+              We keep travel planning human: direct communication, realistic offers, and practical help when plans change.
             </p>
-            <h2 className="mt-3 max-w-2xl text-3xl font-black text-brand-navy sm:text-4xl">
-              Let Go Travel & Tours plan your next trip with clarity and care.
+          </div>
+          <div className="grid gap-4">
+            {trustItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div key={item.title} className="flex gap-4 rounded-[8px] border border-white/10 bg-white/7 p-5">
+                  <Icon className="mt-1 shrink-0 text-gold" size={24} />
+                  <div>
+                    <h3 className="font-black">{item.title}</h3>
+                    <p className="mt-1 text-sm leading-6 text-white/68">{item.text}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-16 sm:py-20">
+        <div className="container-page rounded-[8px] bg-cloud p-8 ring-1 ring-slate-200 sm:p-10 lg:flex lg:items-center lg:justify-between">
+          <div>
+            <p className="flex items-center gap-2 text-sm font-black uppercase tracking-[0.18em] text-gold">
+              <CheckCircle2 size={18} /> Ready to travel
+            </p>
+            <h2 className="mt-3 max-w-2xl text-3xl font-black text-navy sm:text-4xl">
+              Send us your dates and we will prepare a clear offer.
             </h2>
           </div>
-          <Link
-            href="/contact"
-            className="mt-8 inline-flex rounded-full bg-brand-gold px-7 py-4 text-sm font-black text-brand-navy lg:mt-0"
-          >
-            Request an offer
+          <Link href="/support" className="mt-7 inline-flex rounded-full bg-navy px-7 py-4 text-sm font-black text-white lg:mt-0">
+            Contact support
           </Link>
         </div>
       </section>
